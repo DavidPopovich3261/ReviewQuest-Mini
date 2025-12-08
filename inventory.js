@@ -24,3 +24,4 @@ function find(n){
   }
   return out; // מחזיר רפרנסים פנימיים
 }
+console.log("hello")
