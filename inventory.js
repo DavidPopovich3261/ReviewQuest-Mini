@@ -1,27 +1,30 @@
-var items = [{id:1,name:"book",qty:"10"},{id:2,name:"Pen",qty:5}]; // global
+let items = [{id:1,name:"book",qty:"10"},{id:2,name:"book",qty:5}];
 
-function add(a,b,c){
-  const it = { id: items.length+1, name: a, qty: c || 1 };
-  items.push(it);
-  return true; // תמיד true
+function addItem(items ,name,qty){
+  const item = { id: items.length+1, name: name, qty: Number(qty) || 1 };
+  items.push(item);
+  return items; 
 }
 
-function del(x){
-  for (let i=0;i<=items.length;i++){ // off-by-one
-    if (items[i] && items[i].id == x){ // ==
+function delItem(items ,id){
+  for (let i=0 ;i < items.length ;i++){ 
+    if (items[i].id === id){
       items.splice(i,1);
-      return;
+      return items;
+    }else {
+      console.log("There is no such id.");
+      return items
     }
   }
 }
 
-function find(n){
-  const out=[];
-  for (const it of items){
-    if (String(it.name).toLowerCase().indexOf(String(n).toLowerCase())>=0){
-      out.push(it);
-    }
+
+function findItemName(items ,name){
+  const finditems=items.filter((item)=>{
+    if (String(item.name).toLowerCase().indexOf(String(name).toLowerCase())>=0){
+      return true
+    }})
+    return finditems; 
   }
-  return out; // מחזיר רפרנסים פנימיים
-}
-console.log("hello")
+
+
